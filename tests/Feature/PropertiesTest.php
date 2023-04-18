@@ -78,12 +78,14 @@ class PropertiesTest extends TestCase
             'owner_id' => $owner->id,
             'city_id' => $cityId,
         ]);
+
         $photo1 = $this->actingAs($owner)->postJson('/api/owner/properties/' . $property->id . '/photos', [
             'photo' => UploadedFile::fake()->image('photo1.png')
         ]);
         $photo2 = $this->actingAs($owner)->postJson('/api/owner/properties/' . $property->id . '/photos', [
             'photo' => UploadedFile::fake()->image('photo2.png')
         ]);
+
         $newPosition = $photo1->json('position') + 1;
         $response = $this->actingAs($owner)->postJson('/api/owner/properties/' . $property->id . '/photos/' . $property->getFirstMedia('photos')->id . '/reorder/' . $newPosition);
         $response->assertStatus(200);
