@@ -24,5 +24,5 @@ $ php artisan test
 ----
 
 ## 畫面截圖
-![](https://i.imgur.com/4WblCxY.png)
+![](https://i.imgur.com/e9SEFZ3.png)
 > 挑選公寓、飯店等各類絕佳住宿，提供旅客多元的住宿選擇
