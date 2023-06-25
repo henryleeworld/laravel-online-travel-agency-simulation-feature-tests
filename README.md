@@ -16,13 +16,22 @@ $ composer install
 ```sh
 $ php artisan key:generate
 ```
-- 運行功能測試，主要測試大部分的程式碼，包含一些物件如何進行互動，甚至是完整的 HTTP 請求到一個 JSON 端點。
+- 執行 __Artisan__ 指令的 __scribe:generate__ 來執行 API 文件產生。
+```sh
+$ php artisan scribe:generate
+```
+- 運行單元測試和功能測試。大多數的單元測試可能只專注於單一個方法，功能測試則可以測試大部分的程式碼，包含一些物件如何進行互動，甚至是完整的 HTTP 請求到一個 JSON 端點。
 ```sh
 $ php artisan test
 ```
+- 在瀏覽器中輸入已定義的路由 URL 來訪問，例如：http://127.0.0.1:8000。
+- 你可以經由 `/docs` 來進行應用程式介面文件閱讀。
 
 ----
 
 ## 畫面截圖
 ![](https://i.imgur.com/Oe14oLy.png)
 > 挑選公寓、飯店等各類絕佳住宿，提供旅客多元的住宿選擇
+
+![](https://i.imgur.com/YEGrYpd.png)
+> 應用程式介面文件應當包含介紹、說明、輸出格式、和範例代碼
