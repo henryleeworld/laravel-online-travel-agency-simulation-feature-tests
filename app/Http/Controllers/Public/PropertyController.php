@@ -28,8 +28,8 @@ class PropertyController extends Controller
             $property->load(['apartments' => function ($query) use ($request) {
                 $query->where('capacity_adults', '>=', $request->adults)
                     ->where('capacity_children', '>=', $request->children)
-                    ->when($request->start_date && $request->end_date, function ($query) use ($request) {
-                        $query->whereDoesntHave('bookings', function ($q) use ($request) {
+                    ->when($request->start_date && $request->end_date, function($query) use ($request) {
+                        $query->whereDoesntHave('bookings', function($q) use ($request) {
                             $q->validForRange([$request->start_date, $request->end_date]);
                         });
                     })
