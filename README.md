@@ -30,7 +30,7 @@ $ php artisan test
 ----
 
 ## 畫面截圖
-![](https://i.imgur.com/Pic2yiG.png)
+![](https://i.imgur.com/qQURXcx.png)
 > 挑選公寓、飯店等各類絕佳住宿，提供旅客多元的住宿選擇
 
 ![](https://i.imgur.com/YEGrYpd.png)

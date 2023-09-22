@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Api\V2;
 
 use App\Models\City;
 use App\Models\Property;
@@ -17,7 +17,7 @@ class PropertiesTest extends TestCase
     public function test_property_owner_has_access_to_properties_feature()
     {
         $owner = User::factory()->owner()->create();
-        $response = $this->actingAs($owner)->getJson('/api/owner/properties');
+        $response = $this->actingAs($owner)->getJson('/api/v2/owner/properties');
 
         $response->assertStatus(200);
     }
@@ -25,7 +25,7 @@ class PropertiesTest extends TestCase
     public function test_user_does_not_have_access_to_properties_feature()
     {
         $user = User::factory()->user()->create();
-        $response = $this->actingAs($user)->getJson('/api/owner/properties');
+        $response = $this->actingAs($user)->getJson('/api/v2/owner/properties');
 
         $response->assertStatus(403);
     }
@@ -33,7 +33,7 @@ class PropertiesTest extends TestCase
     public function test_property_owner_can_add_property()
     {
         $owner = User::factory()->owner()->create();
-        $response = $this->actingAs($owner)->postJson('/api/owner/properties', [
+        $response = $this->actingAs($owner)->postJson('/api/v2/owner/properties', [
             'name' => 'My property',
             'city_id' => City::value('id'),
             'address_street' => 'Street Address 1',
@@ -55,9 +55,10 @@ class PropertiesTest extends TestCase
             'city_id' => $cityId,
         ]);
 
-        $response = $this->actingAs($owner)->postJson('/api/owner/properties/' . $property->id . '/photos', [
+        $response = $this->actingAs($owner)->postJson('/api/v2/owner/properties/' . $property->id . '/photos', [
             'photo' => UploadedFile::fake()->image('photo.png')
         ]);
+
         $response->assertStatus(200);
         $response->assertJsonFragment([
             'filename' => config('app.url') . '/storage/' . $property->getFirstMedia('photos')->id . '/photo.png',
@@ -82,7 +83,7 @@ class PropertiesTest extends TestCase
         $photo2 = $mediaCollection->last();
 
         $newPosition = $photo1->position + 1;
-        $response = $this->actingAs($owner)->postJson('/api/owner/properties/' . $property->id . '/photos/' . $property->getFirstMedia('images')->id . '/reorder/' . $newPosition);
+        $response = $this->actingAs($owner)->postJson('/api/v2/owner/properties/' . $property->id . '/photos/' . $property->getFirstMedia('images')->id . '/reorder/' . $newPosition);
         $response->assertStatus(200);
         $response->assertJsonFragment(['newPosition' => $newPosition]);
 
