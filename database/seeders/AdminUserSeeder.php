@@ -18,7 +18,7 @@ class AdminUserSeeder extends Seeder
         User::create([
             'name' => 'Administrator',
             'email' => 'superadmin@booking.com',
-            'password' => bcrypt('SuperSecretPassword'),
+            'password' => 'SuperSecretPassword',
             'email_verified_at' => now(),
             'role_id' => 1, // Administrator
         ]);
