@@ -81,6 +81,7 @@
                                       'required' => $parameter->required,
                                       'description' => $parameter->description,
                                       'example' => $parameter->example ?? '',
+                                      'enumValues' => $parameter->enumValues,
                                       'endpointId' => $endpoint->endpointId(),
                                       'component' => 'url',
                                       'isInput' => true,
@@ -104,6 +105,7 @@
                                           'required' => $parameter->required,
                                           'description' => $parameter->description,
                                           'example' => $parameter->example ?? '',
+                                          'enumValues' => $parameter->enumValues,
                                           'endpointId' => $endpoint->endpointId(),
                                           'component' => 'query',
                                           'isInput' => true,
@@ -158,7 +160,7 @@
                             <div class="sl-panel__titlebar sl-flex sl-items-center sl-relative focus:sl-z-10 sl-text-base sl-leading-none sl-pr-3 sl-pl-4 sl-bg-canvas-200 sl-text-body sl-border-input focus:sl-border-primary sl-select-none">
                                 <div class="sl-flex sl-flex-1 sl-items-center sl-h-lg">
                                     <div class="sl--ml-2">
-                                        {{ u::trans("scribe::example_request") }}:
+                                        {{ u::trans("scribe::endpoint.example_request") }}:
                                         <select class="example-request-lang-toggle sl-text-base"
                                                 aria-label="Request Sample Language"
                                                 onchange="switchExampleLanguage(event.target.value);">
@@ -173,7 +175,7 @@
                                 <div class="sl-bg-canvas-100 example-request example-request-{{ $language }}"
                                      style="{{ $index == 0 ? '' : 'display: none;' }}">
                                     <div class="sl-px-0 sl-py-1">
-                                        <div style="max-height: 400px;" class="sl-rounded">
+                                        <div style="max-height: 400px;" class="sl-overflow-y-auto sl-rounded">
                                             @include("scribe::partials.example-requests.$language")
                                         </div>
                                     </div>
@@ -188,7 +190,7 @@
                                 <div class="sl-flex sl-flex-1 sl-items-center sl-py-2">
                                     <div class="sl--ml-2">
                                         <div class="sl-h-sm sl-text-base sl-font-medium sl-px-1.5 sl-text-muted sl-rounded sl-border-transparent sl-border">
-                                            <div class="sl-mb-2 sl-inline-block">{{ u::trans("scribe::example_response") }}:</div>
+                                            <div class="sl-mb-2 sl-inline-block">{{ u::trans("scribe::endpoint.example_response") }}:</div>
                                             <div class="sl-mb-2 sl-inline-block">
                                                 <select
                                                         class="example-response-{{ $endpoint->endpointId() }}-toggle sl-text-base"
@@ -241,9 +243,9 @@
                                             </details>
                                         @endif
                                         @if(is_string($response->content) && Str::startsWith($response->content, "<<binary>>"))
-                                            <pre><code>[{{ u::trans("scribe::example_response.binary") }}] - {{ htmlentities(str_replace("<<binary>>", "", $response->content)) }}</code></pre>
+                                            <pre><code>[{{ u::trans("scribe::endpoint.responses.binary") }}] - {{ htmlentities(str_replace("<<binary>>", "", $response->content)) }}</code></pre>
                                         @elseif($response->status == 204)
-                                            <pre><code>[{{ u::trans("scribe::example_response.empty") }}]</code></pre>
+                                            <pre><code>[{{ u::trans("scribe::endpoint.responses.empty") }}]</code></pre>
                                         @else
                                             @php($parsed = json_decode($response->content))
                                             {{-- If response is a JSON string, prettify it. Otherwise, just print it --}}

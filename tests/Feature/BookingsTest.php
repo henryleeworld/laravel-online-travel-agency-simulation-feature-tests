@@ -53,23 +53,23 @@ class BookingsTest extends TestCase
             'guests_children' => 1,
         ]);
 
-        $response = $this->actingAs($user1)->getJson('/api/user/bookings');
+        $response = $this->actingAs($user1)->getJson('/api/v1/user/bookings');
         $response->assertStatus(200);
         $response->assertJsonCount(1);
         $response->assertJsonFragment(['guests_adults' => 1]);
 
-        $response = $this->actingAs($user1)->getJson('/api/user/bookings/' . $booking1->id);
+        $response = $this->actingAs($user1)->getJson('/api/v1/user/bookings/' . $booking1->id);
         $response->assertStatus(200);
         $response->assertJsonFragment(['guests_adults' => 1]);
 
-        $response = $this->actingAs($user1)->getJson('/api/user/bookings/' . $booking2->id);
+        $response = $this->actingAs($user1)->getJson('/api/v1/user/bookings/' . $booking2->id);
         $response->assertStatus(403);
     }
 
     public function test_property_owner_does_not_have_access_to_bookings_feature()
     {
         $owner = User::factory()->owner()->create();
-        $response = $this->actingAs($owner)->getJson('/api/user/bookings');
+        $response = $this->actingAs($owner)->getJson('/api/v1/user/bookings');
 
         $response->assertStatus(403);
     }
@@ -86,16 +86,16 @@ class BookingsTest extends TestCase
             'guests_adults' => 2,
             'guests_children' => 1,
         ];
-        $response = $this->actingAs($user)->postJson('/api/user/bookings', $bookingParameters);
+        $response = $this->actingAs($user)->postJson('/api/v1/user/bookings', $bookingParameters);
         $response->assertStatus(201);
 
-        $response = $this->actingAs($user)->postJson('/api/user/bookings', $bookingParameters);
+        $response = $this->actingAs($user)->postJson('/api/v1/user/bookings', $bookingParameters);
         $response->assertStatus(422);
 
         $bookingParameters['start_date'] = now()->addDays(3)->toDateString();
         $bookingParameters['end_date'] = now()->addDays(4)->toDateString();
         $bookingParameters['guests_adults'] = 5;
-        $response = $this->actingAs($user)->postJson('/api/user/bookings', $bookingParameters);
+        $response = $this->actingAs($user)->postJson('/api/v1/user/bookings', $bookingParameters);
         $response->assertStatus(422);
     }
 
@@ -113,18 +113,18 @@ class BookingsTest extends TestCase
             'guests_children' => 0,
         ]);
 
-        $response = $this->actingAs($user2)->deleteJson('/api/user/bookings/' . $booking->id);
+        $response = $this->actingAs($user2)->deleteJson('/api/v1/user/bookings/' . $booking->id);
         $response->assertStatus(403);
 
-        $response = $this->actingAs($user1)->deleteJson('/api/user/bookings/' . $booking->id);
+        $response = $this->actingAs($user1)->deleteJson('/api/v1/user/bookings/' . $booking->id);
         $response->assertStatus(204);
 
-        $response = $this->actingAs($user1)->getJson('/api/user/bookings');
+        $response = $this->actingAs($user1)->getJson('/api/v1/user/bookings');
         $response->assertStatus(200);
         $response->assertJsonCount(1);
         $response->assertJsonFragment(['cancelled_at' => now()->toDateString()]);
 
-        $response = $this->actingAs($user1)->getJson('/api/user/bookings/' . $booking->id);
+        $response = $this->actingAs($user1)->getJson('/api/v1/user/bookings/' . $booking->id);
         $response->assertStatus(200);
         $response->assertJsonFragment(['cancelled_at' => now()->toDateString()]);
     }
@@ -143,15 +143,15 @@ class BookingsTest extends TestCase
             'guests_children' => 0,
         ]);
 
-        $response = $this->actingAs($user2)->putJson('/api/user/bookings/' . $booking->id, []);
+        $response = $this->actingAs($user2)->putJson('/api/v1/user/bookings/' . $booking->id, []);
         $response->assertStatus(403);
 
-        $response = $this->actingAs($user1)->putJson('/api/user/bookings/' . $booking->id, [
+        $response = $this->actingAs($user1)->putJson('/api/v1/user/bookings/' . $booking->id, [
             'rating' => 11
         ]);
         $response->assertStatus(422);
 
-        $response = $this->actingAs($user1)->putJson('/api/user/bookings/' . $booking->id, [
+        $response = $this->actingAs($user1)->putJson('/api/v1/user/bookings/' . $booking->id, [
             'rating' => 10,
             'review_comment' => 'Too short comment.'
         ]);
@@ -161,7 +161,7 @@ class BookingsTest extends TestCase
             'rating' => 10,
             'review_comment' => 'Comment with a good length to be accepted.'
         ];
-        $response = $this->actingAs($user1)->putJson('/api/user/bookings/' . $booking->id, $correctData);
+        $response = $this->actingAs($user1)->putJson('/api/v1/user/bookings/' . $booking->id, $correctData);
         $response->assertStatus(200);
         $response->assertJsonFragment($correctData);
     }

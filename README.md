@@ -1,4 +1,4 @@
-# Laravel 10 線上旅行社模擬功能測試
+# Laravel 11 線上旅行社模擬功能測試
 
 公寓、飯店因線上旅行社（OTA）能帶來可觀的流量而選擇與其建立合作關係，以增加曝光度、提升聲譽、填補住房淡季、提高銷售額、獲得競爭優勢等，對於旅客來說，住宿的價格是決定旅程的首要考量，但疫情讓旅程取消的彈性重視度緊隨其後。
 
@@ -30,8 +30,8 @@ $ php artisan test
 ----
 
 ## 畫面截圖
-![](https://i.imgur.com/qQURXcx.png)
+![](https://i.imgur.com/BVqFJfB.png)
 > 挑選公寓、飯店等各類絕佳住宿，提供旅客多元的住宿選擇
 
-![](https://i.imgur.com/YEGrYpd.png)
+![](https://i.imgur.com/Cr000Mf.png)
 > 應用程式介面文件應當包含介紹、說明、輸出格式、和範例代碼

@@ -9,13 +9,10 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
-use Staudenmeir\EloquentEagerLimit\HasEagerLimit;
 
 class Property extends Model implements HasMedia
 {
-    use HasFactory;
-    use HasEagerLimit;
-    use InteractsWithMedia;
+    use HasFactory, InteractsWithMedia;
 
     protected $fillable = [
         'owner_id',

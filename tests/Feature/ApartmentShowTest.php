@@ -54,7 +54,7 @@ class ApartmentShowTest extends TestCase
             $firstFacility->id, $secondFacility->id, $thirdFacility->id
         ]);
 
-        $response = $this->getJson('/api/apartments/'.$apartment->id);
+        $response = $this->getJson('/api/v1/apartments/'.$apartment->id);
         $response->assertStatus(200);
         $response->assertJsonPath('name', $apartment->name);
         $response->assertJsonCount(2, 'facility_categories');

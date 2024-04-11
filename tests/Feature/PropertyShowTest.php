@@ -53,19 +53,19 @@ class PropertyShowTest extends TestCase
         ]);
         $midSizeApartment->facilities()->attach($facility->id);
 
-        $response = $this->getJson('/api/properties/'.$property->id);
+        $response = $this->getJson('/api/v1/properties/'.$property->id);
         $response->assertStatus(200);
         $response->assertJsonCount(3, 'apartments');
         $response->assertJsonPath('name', $property->name);
 
-        $response = $this->getJson('/api/properties/'.$property->id.'?adults=2&children=1');
+        $response = $this->getJson('/api/v1/properties/'.$property->id.'?adults=2&children=1');
         $response->assertStatus(200);
         $response->assertJsonCount(2, 'apartments');
         $response->assertJsonPath('name', $property->name);
         $response->assertJsonPath('apartments.0.facilities.0.name', $facility->name);
         $response->assertJsonCount(0, 'apartments.1.facilities');
 
-        $response = $this->getJson('/api/search?city=' . $cityId . '&adults=2&children=1');
+        $response = $this->getJson('/api/v1/search?city=' . $cityId . '&adults=2&children=1');
         $response->assertStatus(200);
         $response->assertJsonPath('properties.0.apartments.0.facilities', NULL);
     }
