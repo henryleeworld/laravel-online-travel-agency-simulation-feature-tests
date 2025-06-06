@@ -33,5 +33,5 @@ $ php artisan test
 ![](https://i.imgur.com/VLCwJ7S.png)
 > 挑選公寓、飯店等各類絕佳住宿，提供旅客多元的住宿選擇
 
-![](https://i.imgur.com/9C92TBI.png)
+![](https://i.imgur.com/1djF6Mn.png)
 > 應用程式介面文件應當包含介紹、說明、輸出格式、和範例代碼
