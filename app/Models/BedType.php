@@ -7,7 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class BedType extends Model
 {
+    /** @use HasFactory<\Database\Factories\BedTypeFactory> */
     use HasFactory;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var list<string>
+     */
     protected $fillable = ['name'];
 }

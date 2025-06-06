@@ -17,6 +17,9 @@ class UpdatePropertyRatingJob implements ShouldQueue
     {
     }
 
+    /**
+     * Execute the job.
+     */
     public function handle(): void
     {
         $apartment = $this->booking->apartment;

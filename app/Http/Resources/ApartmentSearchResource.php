@@ -7,7 +7,6 @@ use App\Services\PricingService;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-/** @mixin Apartment */
 class ApartmentSearchResource extends JsonResource
 {
     /**

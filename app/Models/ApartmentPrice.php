@@ -8,13 +8,27 @@ use Illuminate\Database\Eloquent\Model;
 
 class ApartmentPrice extends Model
 {
+    /** @use HasFactory<\Database\Factories\ApartmentPriceFactory> */
     use HasFactory, ValidForRange;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var list<string>
+     */
     protected $fillable = ['apartment_id', 'start_date', 'end_date', 'price'];
 
-    protected $casts = [
-        'start_date' => 'date',
-        'end_date' => 'date',
-    ];
+    /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
+    {
+        return [
+            'start_date' => 'date',
+            'end_date' => 'date',
+        ];
+    }
 
 }

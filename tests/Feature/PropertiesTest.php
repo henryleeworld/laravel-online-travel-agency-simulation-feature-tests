@@ -71,6 +71,7 @@ class PropertiesTest extends TestCase
 
         $owner = User::factory()->owner()->create();
         $cityId = City::value('id');
+
         $property = Property::factory()->withImages()->create([
             'owner_id' => $owner->id,
             'city_id' => $cityId,

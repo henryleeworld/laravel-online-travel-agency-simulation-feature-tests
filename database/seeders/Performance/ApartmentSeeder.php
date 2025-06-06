@@ -10,7 +10,7 @@ use Illuminate\Database\Seeder;
 class ApartmentSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * Run the database seeders.
      */
     public function run(int $count = 100): void
     {

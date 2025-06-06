@@ -27,7 +27,7 @@
 
     @if($tryItOut['enabled'] ?? true)
         <script>
-            var tryItOutBaseUrl = "{{ $tryItOut['base_url'] ?? config('app.url') }}";
+            var tryItOutBaseUrl = "{{ $tryItOut['base_url'] ?? $baseUrl }}";
             var useCsrf = Boolean({{ $tryItOut['use_csrf'] ?? null }});
             var csrfUrl = "{{ $tryItOut['csrf_url'] ?? null }}";
         </script>
@@ -111,6 +111,11 @@
                     });
                 }
 
+                // content type has to be unset otherwise file upload won't work
+                if (form.dataset.hasfiles === "1") {
+                    delete headers['Content-Type'];
+                }
+
                 return preflightPromise.then(() => makeAPICall(method, path, body, query, headers, endpointId))
                     .then(([responseStatus, statusText, responseContent, responseHeaders]) => {
                         responsePanel.hidden = false;
@@ -131,6 +136,9 @@
                                 responseContent = JSON.stringify(jsonParsed, null, 4);
                             }
                         } catch (e) {}
+
+                        // Replace HTML entities
+                        responseContent = responseContent.replace(/[<>&]/g, (i) => '&#' + i.charCodeAt(0) + ';');
 
                         contentEl.innerHTML = responseContent;
                         isJson && window.hljs.highlightElement(contentEl);

@@ -6,7 +6,6 @@ use App\Models\Apartment;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-/** @mixin Apartment */
 class ApartmentDetailsResource extends JsonResource
 {
     /**

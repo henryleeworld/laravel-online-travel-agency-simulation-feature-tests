@@ -6,6 +6,22 @@ info:
 servers:
   -
     url: 'http://127.0.0.1:8000'
+tags:
+  -
+    name: Authentication
+    description: ''
+  -
+    name: Endpoints
+    description: ''
+  -
+    name: Owner
+    description: ''
+  -
+    name: Public
+    description: ''
+  -
+    name: User
+    description: ''
 paths:
   /api/v1/auth/register:
     post:
@@ -61,20 +77,24 @@ paths:
               properties:
                 name:
                   type: string
-                  description: ':Attribute 不能多於 255 個字元。.'
-                  example: efphjbgmdlkqgudl
+                  description: 'value 不能多於 255 個字元。.'
+                  example: vmqeopfuudtdsufvyvddq
+                  nullable: false
                 email:
                   type: string
-                  description: ':Attribute 必須是有效的 E-mail。 :Attribute 不能多於 255 個字元。.'
-                  example: schaden.carey@example.com
+                  description: 'value 必須是有效的 E-mail。 value 不能多於 255 個字元。.'
+                  example: kunde.eloisa@example.com
+                  nullable: false
                 password:
                   type: string
                   description: ''
-                  example: quia
+                  example: consequatur
+                  nullable: false
                 role_id:
                   type: string
                   description: ''
-                  example: dicta
+                  example: consequatur
+                  nullable: false
               required:
                 - name
                 - email
@@ -99,20 +119,24 @@ paths:
               properties:
                 name:
                   type: string
-                  description: ':Attribute 不能多於 255 個字元。.'
-                  example: rplghoozglkjiegexnysjcbb
+                  description: 'value 不能多於 255 個字元。.'
+                  example: vmqeopfuudtdsufvyvddq
+                  nullable: false
                 email:
                   type: string
-                  description: ':Attribute 必須是有效的 E-mail。 :Attribute 不能多於 255 個字元。.'
-                  example: pbeier@example.org
+                  description: 'value 必須是有效的 E-mail。 value 不能多於 255 個字元。.'
+                  example: kunde.eloisa@example.com
+                  nullable: false
                 password:
                   type: string
                   description: ''
-                  example: harum
+                  example: consequatur
+                  nullable: false
                 role_id:
                   type: string
                   description: ''
-                  example: recusandae
+                  example: consequatur
+                  nullable: false
               required:
                 - name
                 - email
@@ -159,19 +183,23 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: nihil
+                  example: consequatur
+                  nullable: false
                 city_id:
                   type: string
-                  description: ''
-                  example: optio
+                  description: 'The <code>id</code> of an existing record in the cities table.'
+                  example: consequatur
+                  nullable: false
                 address_street:
                   type: string
                   description: ''
-                  example: occaecati
+                  example: consequatur
+                  nullable: false
                 address_postcode:
                   type: string
                   description: ''
-                  example: necessitatibus
+                  example: consequatur
+                  nullable: false
               required:
                 - name
                 - city_id
@@ -197,14 +225,15 @@ paths:
                 photo:
                   type: string
                   format: binary
-                  description: ':Attribute 必須是一張圖片。 :Attribute 不能大於 5000 KB。.'
+                  description: 'value 必須是一張圖片。 value 不能大於 5000 KB。.'
+                  nullable: false
       security: []
     parameters:
       -
         in: path
         name: property_id
         description: 'The ID of the property.'
-        example: 8
+        example: 17
         required: true
         schema:
           type: integer
@@ -223,7 +252,7 @@ paths:
         in: path
         name: property_id
         description: 'The ID of the property.'
-        example: 20
+        example: 17
         required: true
         schema:
           type: integer
@@ -231,7 +260,7 @@ paths:
         in: path
         name: photo_id
         description: 'The ID of the photo.'
-        example: 16
+        example: 17
         required: true
         schema:
           type: integer
@@ -239,7 +268,7 @@ paths:
         in: path
         name: newPosition
         description: ''
-        example: ut
+        example: consequatur
         required: true
         schema:
           type: string
@@ -282,30 +311,56 @@ paths:
               properties:
                 apartment_id:
                   type: string
-                  description: ''
-                  example: eos
+                  description: 'The <code>id</code> of an existing record in the apartments table.'
+                  example: consequatur
+                  nullable: false
                 start_date:
                   type: string
-                  description: ':Attribute 不是有效的日期。.'
-                  example: '2024-04-02T03:38:43'
+                  description: 'value 不是有效的日期。.'
+                  example: '2025-06-04T03:55:28'
+                  nullable: false
                 end_date:
                   type: string
-                  description: ':Attribute 不是有效的日期。.'
-                  example: '2024-04-02T03:38:43'
+                  description: 'value 不是有效的日期。.'
+                  example: '2025-06-04T03:55:28'
+                  nullable: false
                 guests_adults:
                   type: integer
                   description: ''
-                  example: 5
+                  example: 17
+                  nullable: false
                 guests_children:
                   type: integer
                   description: ''
-                  example: 4
+                  example: 17
+                  nullable: false
                 guests:
                   type: array
-                  description: ':Attribute 必須是 0 個元素。.'
-                  example: unde
+                  description: 'value 必須是 0 個元素。.'
+                  example:
+                    - []
                   items:
-                    type: string
+                    type: object
+                    properties:
+                      first_name:
+                        type: string
+                        description: ''
+                        example: consequatur
+                        nullable: false
+                      last_name:
+                        type: string
+                        description: ''
+                        example: consequatur
+                        nullable: false
+                      birth_date:
+                        type: string
+                        description: 'value 不是有效的日期。.'
+                        example: '2025-06-04T03:55:28'
+                        nullable: false
+                    required:
+                      - first_name
+                      - last_name
+                      - birth_date
               required:
                 - apartment_id
                 - start_date
@@ -351,12 +406,14 @@ paths:
               properties:
                 rating:
                   type: integer
-                  description: ':Attribute 必須介於 1 至 10 之間。.'
+                  description: 'value 必須介於 1 至 10 之間。.'
                   example: 2
+                  nullable: false
                 review_comment:
                   type: string
-                  description: ':Attribute 不能小於 20 個字元。.'
-                  example: efskpxsdovmkkylcbkgotusndsvmwntivvfhljulucxrxkfbkaljguurevvl
+                  description: 'value 不能小於 20 個字元。.'
+                  example: mqeopfuudtdsufvyvddqamniihfqcoynlazghdtqtqxbajwbpilpmufinllwloauydlsmsjuryvoj
+                  nullable: false
       security: []
     delete:
       summary: ''
@@ -372,7 +429,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the booking.'
-        example: 6
+        example: 17
         required: true
         schema:
           type: integer
@@ -512,693 +569,11 @@ paths:
               schema:
                 type: object
                 example:
-                  message: 'No query results for model [App\Models\Property] 6'
-                  exception: Symfony\Component\HttpKernel\Exception\NotFoundHttpException
-                  file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Foundation\Exceptions\Handler.php'
-                  line: 628
-                  trace:
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Foundation\Exceptions\Handler.php'
-                      line: 576
-                      function: prepareException
-                      class: Illuminate\Foundation\Exceptions\Handler
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\nunomaduro\collision\src\Adapters\Laravel\ExceptionHandler.php'
-                      line: 54
-                      function: render
-                      class: Illuminate\Foundation\Exceptions\Handler
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php'
-                      line: 51
-                      function: render
-                      class: NunoMaduro\Collision\Adapters\Laravel\ExceptionHandler
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                      line: 188
-                      function: handleException
-                      class: Illuminate\Routing\Pipeline
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                      line: 119
-                      function: 'Illuminate\Pipeline\{closure}'
-                      class: Illuminate\Pipeline\Pipeline
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Routing\Router.php'
-                      line: 805
-                      function: then
-                      class: Illuminate\Pipeline\Pipeline
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Routing\Router.php'
-                      line: 784
-                      function: runRouteWithinStack
-                      class: Illuminate\Routing\Router
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Routing\Router.php'
-                      line: 748
-                      function: runRoute
-                      class: Illuminate\Routing\Router
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Routing\Router.php'
-                      line: 737
-                      function: dispatchToRoute
-                      class: Illuminate\Routing\Router
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php'
-                      line: 200
-                      function: dispatch
-                      class: Illuminate\Routing\Router
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                      line: 144
-                      function: 'Illuminate\Foundation\Http\{closure}'
-                      class: Illuminate\Foundation\Http\Kernel
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TransformsRequest.php'
-                      line: 21
-                      function: 'Illuminate\Pipeline\{closure}'
-                      class: Illuminate\Pipeline\Pipeline
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull.php'
-                      line: 31
-                      function: handle
-                      class: Illuminate\Foundation\Http\Middleware\TransformsRequest
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                      line: 183
-                      function: handle
-                      class: Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TransformsRequest.php'
-                      line: 21
-                      function: 'Illuminate\Pipeline\{closure}'
-                      class: Illuminate\Pipeline\Pipeline
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TrimStrings.php'
-                      line: 50
-                      function: handle
-                      class: Illuminate\Foundation\Http\Middleware\TransformsRequest
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                      line: 183
-                      function: handle
-                      class: Illuminate\Foundation\Http\Middleware\TrimStrings
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Http\Middleware\ValidatePostSize.php'
-                      line: 27
-                      function: 'Illuminate\Pipeline\{closure}'
-                      class: Illuminate\Pipeline\Pipeline
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                      line: 183
-                      function: handle
-                      class: Illuminate\Http\Middleware\ValidatePostSize
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance.php'
-                      line: 110
-                      function: 'Illuminate\Pipeline\{closure}'
-                      class: Illuminate\Pipeline\Pipeline
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                      line: 183
-                      function: handle
-                      class: Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Http\Middleware\HandleCors.php'
-                      line: 62
-                      function: 'Illuminate\Pipeline\{closure}'
-                      class: Illuminate\Pipeline\Pipeline
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                      line: 183
-                      function: handle
-                      class: Illuminate\Http\Middleware\HandleCors
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Http\Middleware\TrustProxies.php'
-                      line: 57
-                      function: 'Illuminate\Pipeline\{closure}'
-                      class: Illuminate\Pipeline\Pipeline
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                      line: 183
-                      function: handle
-                      class: Illuminate\Http\Middleware\TrustProxies
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                      line: 119
-                      function: 'Illuminate\Pipeline\{closure}'
-                      class: Illuminate\Pipeline\Pipeline
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php'
-                      line: 175
-                      function: then
-                      class: Illuminate\Pipeline\Pipeline
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php'
-                      line: 144
-                      function: sendRequestThroughRouter
-                      class: Illuminate\Foundation\Http\Kernel
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
-                      line: 300
-                      function: handle
-                      class: Illuminate\Foundation\Http\Kernel
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
-                      line: 288
-                      function: callLaravelOrLumenRoute
-                      class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
-                      line: 91
-                      function: makeApiCall
-                      class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
-                      line: 44
-                      function: makeResponseCall
-                      class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
-                      line: 35
-                      function: makeResponseCallIfConditionsPass
-                      class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\knuckleswtf\scribe\src\Extracting\Extractor.php'
-                      line: 236
-                      function: __invoke
-                      class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\knuckleswtf\scribe\src\Extracting\Extractor.php'
-                      line: 163
-                      function: iterateThroughStrategies
-                      class: Knuckles\Scribe\Extracting\Extractor
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\knuckleswtf\scribe\src\Extracting\Extractor.php'
-                      line: 95
-                      function: fetchResponses
-                      class: Knuckles\Scribe\Extracting\Extractor
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\knuckleswtf\scribe\src\GroupedEndpoints\GroupedEndpointsFromApp.php'
-                      line: 125
-                      function: processRoute
-                      class: Knuckles\Scribe\Extracting\Extractor
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\knuckleswtf\scribe\src\GroupedEndpoints\GroupedEndpointsFromApp.php'
-                      line: 72
-                      function: extractEndpointsInfoFromLaravelApp
-                      class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\knuckleswtf\scribe\src\GroupedEndpoints\GroupedEndpointsFromApp.php'
-                      line: 50
-                      function: extractEndpointsInfoAndWriteToDisk
-                      class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\knuckleswtf\scribe\src\Commands\GenerateDocumentation.php'
-                      line: 53
-                      function: get
-                      class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php'
-                      line: 36
-                      function: handle
-                      class: Knuckles\Scribe\Commands\GenerateDocumentation
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Container\Util.php'
-                      line: 41
-                      function: 'Illuminate\Container\{closure}'
-                      class: Illuminate\Container\BoundMethod
-                      type: '::'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php'
-                      line: 93
-                      function: unwrapIfClosure
-                      class: Illuminate\Container\Util
-                      type: '::'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php'
-                      line: 35
-                      function: callBoundMethod
-                      class: Illuminate\Container\BoundMethod
-                      type: '::'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Container\Container.php'
-                      line: 662
-                      function: call
-                      class: Illuminate\Container\BoundMethod
-                      type: '::'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Console\Command.php'
-                      line: 212
-                      function: call
-                      class: Illuminate\Container\Container
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\symfony\console\Command\Command.php'
-                      line: 279
-                      function: execute
-                      class: Illuminate\Console\Command
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Console\Command.php'
-                      line: 181
-                      function: run
-                      class: Symfony\Component\Console\Command\Command
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\symfony\console\Application.php'
-                      line: 1049
-                      function: run
-                      class: Illuminate\Console\Command
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\symfony\console\Application.php'
-                      line: 318
-                      function: doRunCommand
-                      class: Symfony\Component\Console\Application
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\symfony\console\Application.php'
-                      line: 169
-                      function: doRun
-                      class: Symfony\Component\Console\Application
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php'
-                      line: 196
-                      function: run
-                      class: Symfony\Component\Console\Application
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Foundation\Application.php'
-                      line: 1183
-                      function: handle
-                      class: Illuminate\Foundation\Console\Kernel
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\artisan'
-                      line: 13
-                      function: handleCommand
-                      class: Illuminate\Foundation\Application
-                      type: '->'
+                  message: 'No query results for model [App\Models\Property] 17'
                 properties:
                   message:
                     type: string
-                    example: 'No query results for model [App\Models\Property] 6'
-                  exception:
-                    type: string
-                    example: Symfony\Component\HttpKernel\Exception\NotFoundHttpException
-                  file:
-                    type: string
-                    example: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Foundation\Exceptions\Handler.php'
-                  line:
-                    type: integer
-                    example: 628
-                  trace:
-                    type: array
-                    example:
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Foundation\Exceptions\Handler.php'
-                        line: 576
-                        function: prepareException
-                        class: Illuminate\Foundation\Exceptions\Handler
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\nunomaduro\collision\src\Adapters\Laravel\ExceptionHandler.php'
-                        line: 54
-                        function: render
-                        class: Illuminate\Foundation\Exceptions\Handler
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php'
-                        line: 51
-                        function: render
-                        class: NunoMaduro\Collision\Adapters\Laravel\ExceptionHandler
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                        line: 188
-                        function: handleException
-                        class: Illuminate\Routing\Pipeline
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                        line: 119
-                        function: 'Illuminate\Pipeline\{closure}'
-                        class: Illuminate\Pipeline\Pipeline
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Routing\Router.php'
-                        line: 805
-                        function: then
-                        class: Illuminate\Pipeline\Pipeline
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Routing\Router.php'
-                        line: 784
-                        function: runRouteWithinStack
-                        class: Illuminate\Routing\Router
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Routing\Router.php'
-                        line: 748
-                        function: runRoute
-                        class: Illuminate\Routing\Router
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Routing\Router.php'
-                        line: 737
-                        function: dispatchToRoute
-                        class: Illuminate\Routing\Router
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php'
-                        line: 200
-                        function: dispatch
-                        class: Illuminate\Routing\Router
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                        line: 144
-                        function: 'Illuminate\Foundation\Http\{closure}'
-                        class: Illuminate\Foundation\Http\Kernel
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TransformsRequest.php'
-                        line: 21
-                        function: 'Illuminate\Pipeline\{closure}'
-                        class: Illuminate\Pipeline\Pipeline
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull.php'
-                        line: 31
-                        function: handle
-                        class: Illuminate\Foundation\Http\Middleware\TransformsRequest
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                        line: 183
-                        function: handle
-                        class: Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TransformsRequest.php'
-                        line: 21
-                        function: 'Illuminate\Pipeline\{closure}'
-                        class: Illuminate\Pipeline\Pipeline
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TrimStrings.php'
-                        line: 50
-                        function: handle
-                        class: Illuminate\Foundation\Http\Middleware\TransformsRequest
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                        line: 183
-                        function: handle
-                        class: Illuminate\Foundation\Http\Middleware\TrimStrings
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Http\Middleware\ValidatePostSize.php'
-                        line: 27
-                        function: 'Illuminate\Pipeline\{closure}'
-                        class: Illuminate\Pipeline\Pipeline
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                        line: 183
-                        function: handle
-                        class: Illuminate\Http\Middleware\ValidatePostSize
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance.php'
-                        line: 110
-                        function: 'Illuminate\Pipeline\{closure}'
-                        class: Illuminate\Pipeline\Pipeline
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                        line: 183
-                        function: handle
-                        class: Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Http\Middleware\HandleCors.php'
-                        line: 62
-                        function: 'Illuminate\Pipeline\{closure}'
-                        class: Illuminate\Pipeline\Pipeline
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                        line: 183
-                        function: handle
-                        class: Illuminate\Http\Middleware\HandleCors
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Http\Middleware\TrustProxies.php'
-                        line: 57
-                        function: 'Illuminate\Pipeline\{closure}'
-                        class: Illuminate\Pipeline\Pipeline
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                        line: 183
-                        function: handle
-                        class: Illuminate\Http\Middleware\TrustProxies
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                        line: 119
-                        function: 'Illuminate\Pipeline\{closure}'
-                        class: Illuminate\Pipeline\Pipeline
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php'
-                        line: 175
-                        function: then
-                        class: Illuminate\Pipeline\Pipeline
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php'
-                        line: 144
-                        function: sendRequestThroughRouter
-                        class: Illuminate\Foundation\Http\Kernel
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
-                        line: 300
-                        function: handle
-                        class: Illuminate\Foundation\Http\Kernel
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
-                        line: 288
-                        function: callLaravelOrLumenRoute
-                        class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
-                        line: 91
-                        function: makeApiCall
-                        class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
-                        line: 44
-                        function: makeResponseCall
-                        class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
-                        line: 35
-                        function: makeResponseCallIfConditionsPass
-                        class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\knuckleswtf\scribe\src\Extracting\Extractor.php'
-                        line: 236
-                        function: __invoke
-                        class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\knuckleswtf\scribe\src\Extracting\Extractor.php'
-                        line: 163
-                        function: iterateThroughStrategies
-                        class: Knuckles\Scribe\Extracting\Extractor
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\knuckleswtf\scribe\src\Extracting\Extractor.php'
-                        line: 95
-                        function: fetchResponses
-                        class: Knuckles\Scribe\Extracting\Extractor
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\knuckleswtf\scribe\src\GroupedEndpoints\GroupedEndpointsFromApp.php'
-                        line: 125
-                        function: processRoute
-                        class: Knuckles\Scribe\Extracting\Extractor
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\knuckleswtf\scribe\src\GroupedEndpoints\GroupedEndpointsFromApp.php'
-                        line: 72
-                        function: extractEndpointsInfoFromLaravelApp
-                        class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\knuckleswtf\scribe\src\GroupedEndpoints\GroupedEndpointsFromApp.php'
-                        line: 50
-                        function: extractEndpointsInfoAndWriteToDisk
-                        class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\knuckleswtf\scribe\src\Commands\GenerateDocumentation.php'
-                        line: 53
-                        function: get
-                        class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php'
-                        line: 36
-                        function: handle
-                        class: Knuckles\Scribe\Commands\GenerateDocumentation
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Container\Util.php'
-                        line: 41
-                        function: 'Illuminate\Container\{closure}'
-                        class: Illuminate\Container\BoundMethod
-                        type: '::'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php'
-                        line: 93
-                        function: unwrapIfClosure
-                        class: Illuminate\Container\Util
-                        type: '::'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php'
-                        line: 35
-                        function: callBoundMethod
-                        class: Illuminate\Container\BoundMethod
-                        type: '::'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Container\Container.php'
-                        line: 662
-                        function: call
-                        class: Illuminate\Container\BoundMethod
-                        type: '::'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Console\Command.php'
-                        line: 212
-                        function: call
-                        class: Illuminate\Container\Container
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\symfony\console\Command\Command.php'
-                        line: 279
-                        function: execute
-                        class: Illuminate\Console\Command
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Console\Command.php'
-                        line: 181
-                        function: run
-                        class: Symfony\Component\Console\Command\Command
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\symfony\console\Application.php'
-                        line: 1049
-                        function: run
-                        class: Illuminate\Console\Command
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\symfony\console\Application.php'
-                        line: 318
-                        function: doRunCommand
-                        class: Symfony\Component\Console\Application
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\symfony\console\Application.php'
-                        line: 169
-                        function: doRun
-                        class: Symfony\Component\Console\Application
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php'
-                        line: 196
-                        function: run
-                        class: Symfony\Component\Console\Application
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Foundation\Application.php'
-                        line: 1183
-                        function: handle
-                        class: Illuminate\Foundation\Console\Kernel
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\artisan'
-                        line: 13
-                        function: handleCommand
-                        class: Illuminate\Foundation\Application
-                        type: '->'
-                    items:
-                      type: object
-                      properties:
-                        file:
-                          type: string
-                          example: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Foundation\Exceptions\Handler.php'
-                        line:
-                          type: integer
-                          example: 576
-                        function:
-                          type: string
-                          example: prepareException
-                        class:
-                          type: string
-                          example: Illuminate\Foundation\Exceptions\Handler
-                        type:
-                          type: string
-                          example: '->'
+                    example: 'No query results for model [App\Models\Property] 17'
       tags:
         - Endpoints
       security: []
@@ -1207,7 +582,7 @@ paths:
         in: path
         name: property_id
         description: 'The ID of the property.'
-        example: 6
+        example: 17
         required: true
         schema:
           type: integer
@@ -1225,693 +600,11 @@ paths:
               schema:
                 type: object
                 example:
-                  message: 'No query results for model [App\Models\Apartment] 15'
-                  exception: Symfony\Component\HttpKernel\Exception\NotFoundHttpException
-                  file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Foundation\Exceptions\Handler.php'
-                  line: 628
-                  trace:
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Foundation\Exceptions\Handler.php'
-                      line: 576
-                      function: prepareException
-                      class: Illuminate\Foundation\Exceptions\Handler
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\nunomaduro\collision\src\Adapters\Laravel\ExceptionHandler.php'
-                      line: 54
-                      function: render
-                      class: Illuminate\Foundation\Exceptions\Handler
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php'
-                      line: 51
-                      function: render
-                      class: NunoMaduro\Collision\Adapters\Laravel\ExceptionHandler
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                      line: 188
-                      function: handleException
-                      class: Illuminate\Routing\Pipeline
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                      line: 119
-                      function: 'Illuminate\Pipeline\{closure}'
-                      class: Illuminate\Pipeline\Pipeline
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Routing\Router.php'
-                      line: 805
-                      function: then
-                      class: Illuminate\Pipeline\Pipeline
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Routing\Router.php'
-                      line: 784
-                      function: runRouteWithinStack
-                      class: Illuminate\Routing\Router
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Routing\Router.php'
-                      line: 748
-                      function: runRoute
-                      class: Illuminate\Routing\Router
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Routing\Router.php'
-                      line: 737
-                      function: dispatchToRoute
-                      class: Illuminate\Routing\Router
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php'
-                      line: 200
-                      function: dispatch
-                      class: Illuminate\Routing\Router
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                      line: 144
-                      function: 'Illuminate\Foundation\Http\{closure}'
-                      class: Illuminate\Foundation\Http\Kernel
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TransformsRequest.php'
-                      line: 21
-                      function: 'Illuminate\Pipeline\{closure}'
-                      class: Illuminate\Pipeline\Pipeline
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull.php'
-                      line: 31
-                      function: handle
-                      class: Illuminate\Foundation\Http\Middleware\TransformsRequest
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                      line: 183
-                      function: handle
-                      class: Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TransformsRequest.php'
-                      line: 21
-                      function: 'Illuminate\Pipeline\{closure}'
-                      class: Illuminate\Pipeline\Pipeline
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TrimStrings.php'
-                      line: 50
-                      function: handle
-                      class: Illuminate\Foundation\Http\Middleware\TransformsRequest
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                      line: 183
-                      function: handle
-                      class: Illuminate\Foundation\Http\Middleware\TrimStrings
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Http\Middleware\ValidatePostSize.php'
-                      line: 27
-                      function: 'Illuminate\Pipeline\{closure}'
-                      class: Illuminate\Pipeline\Pipeline
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                      line: 183
-                      function: handle
-                      class: Illuminate\Http\Middleware\ValidatePostSize
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance.php'
-                      line: 110
-                      function: 'Illuminate\Pipeline\{closure}'
-                      class: Illuminate\Pipeline\Pipeline
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                      line: 183
-                      function: handle
-                      class: Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Http\Middleware\HandleCors.php'
-                      line: 62
-                      function: 'Illuminate\Pipeline\{closure}'
-                      class: Illuminate\Pipeline\Pipeline
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                      line: 183
-                      function: handle
-                      class: Illuminate\Http\Middleware\HandleCors
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Http\Middleware\TrustProxies.php'
-                      line: 57
-                      function: 'Illuminate\Pipeline\{closure}'
-                      class: Illuminate\Pipeline\Pipeline
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                      line: 183
-                      function: handle
-                      class: Illuminate\Http\Middleware\TrustProxies
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                      line: 119
-                      function: 'Illuminate\Pipeline\{closure}'
-                      class: Illuminate\Pipeline\Pipeline
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php'
-                      line: 175
-                      function: then
-                      class: Illuminate\Pipeline\Pipeline
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php'
-                      line: 144
-                      function: sendRequestThroughRouter
-                      class: Illuminate\Foundation\Http\Kernel
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
-                      line: 300
-                      function: handle
-                      class: Illuminate\Foundation\Http\Kernel
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
-                      line: 288
-                      function: callLaravelOrLumenRoute
-                      class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
-                      line: 91
-                      function: makeApiCall
-                      class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
-                      line: 44
-                      function: makeResponseCall
-                      class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
-                      line: 35
-                      function: makeResponseCallIfConditionsPass
-                      class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\knuckleswtf\scribe\src\Extracting\Extractor.php'
-                      line: 236
-                      function: __invoke
-                      class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\knuckleswtf\scribe\src\Extracting\Extractor.php'
-                      line: 163
-                      function: iterateThroughStrategies
-                      class: Knuckles\Scribe\Extracting\Extractor
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\knuckleswtf\scribe\src\Extracting\Extractor.php'
-                      line: 95
-                      function: fetchResponses
-                      class: Knuckles\Scribe\Extracting\Extractor
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\knuckleswtf\scribe\src\GroupedEndpoints\GroupedEndpointsFromApp.php'
-                      line: 125
-                      function: processRoute
-                      class: Knuckles\Scribe\Extracting\Extractor
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\knuckleswtf\scribe\src\GroupedEndpoints\GroupedEndpointsFromApp.php'
-                      line: 72
-                      function: extractEndpointsInfoFromLaravelApp
-                      class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\knuckleswtf\scribe\src\GroupedEndpoints\GroupedEndpointsFromApp.php'
-                      line: 50
-                      function: extractEndpointsInfoAndWriteToDisk
-                      class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\knuckleswtf\scribe\src\Commands\GenerateDocumentation.php'
-                      line: 53
-                      function: get
-                      class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php'
-                      line: 36
-                      function: handle
-                      class: Knuckles\Scribe\Commands\GenerateDocumentation
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Container\Util.php'
-                      line: 41
-                      function: 'Illuminate\Container\{closure}'
-                      class: Illuminate\Container\BoundMethod
-                      type: '::'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php'
-                      line: 93
-                      function: unwrapIfClosure
-                      class: Illuminate\Container\Util
-                      type: '::'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php'
-                      line: 35
-                      function: callBoundMethod
-                      class: Illuminate\Container\BoundMethod
-                      type: '::'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Container\Container.php'
-                      line: 662
-                      function: call
-                      class: Illuminate\Container\BoundMethod
-                      type: '::'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Console\Command.php'
-                      line: 212
-                      function: call
-                      class: Illuminate\Container\Container
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\symfony\console\Command\Command.php'
-                      line: 279
-                      function: execute
-                      class: Illuminate\Console\Command
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Console\Command.php'
-                      line: 181
-                      function: run
-                      class: Symfony\Component\Console\Command\Command
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\symfony\console\Application.php'
-                      line: 1049
-                      function: run
-                      class: Illuminate\Console\Command
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\symfony\console\Application.php'
-                      line: 318
-                      function: doRunCommand
-                      class: Symfony\Component\Console\Application
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\symfony\console\Application.php'
-                      line: 169
-                      function: doRun
-                      class: Symfony\Component\Console\Application
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php'
-                      line: 196
-                      function: run
-                      class: Symfony\Component\Console\Application
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Foundation\Application.php'
-                      line: 1183
-                      function: handle
-                      class: Illuminate\Foundation\Console\Kernel
-                      type: '->'
-                    -
-                      file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\artisan'
-                      line: 13
-                      function: handleCommand
-                      class: Illuminate\Foundation\Application
-                      type: '->'
+                  message: 'No query results for model [App\Models\Apartment] 17'
                 properties:
                   message:
                     type: string
-                    example: 'No query results for model [App\Models\Apartment] 15'
-                  exception:
-                    type: string
-                    example: Symfony\Component\HttpKernel\Exception\NotFoundHttpException
-                  file:
-                    type: string
-                    example: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Foundation\Exceptions\Handler.php'
-                  line:
-                    type: integer
-                    example: 628
-                  trace:
-                    type: array
-                    example:
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Foundation\Exceptions\Handler.php'
-                        line: 576
-                        function: prepareException
-                        class: Illuminate\Foundation\Exceptions\Handler
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\nunomaduro\collision\src\Adapters\Laravel\ExceptionHandler.php'
-                        line: 54
-                        function: render
-                        class: Illuminate\Foundation\Exceptions\Handler
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php'
-                        line: 51
-                        function: render
-                        class: NunoMaduro\Collision\Adapters\Laravel\ExceptionHandler
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                        line: 188
-                        function: handleException
-                        class: Illuminate\Routing\Pipeline
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                        line: 119
-                        function: 'Illuminate\Pipeline\{closure}'
-                        class: Illuminate\Pipeline\Pipeline
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Routing\Router.php'
-                        line: 805
-                        function: then
-                        class: Illuminate\Pipeline\Pipeline
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Routing\Router.php'
-                        line: 784
-                        function: runRouteWithinStack
-                        class: Illuminate\Routing\Router
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Routing\Router.php'
-                        line: 748
-                        function: runRoute
-                        class: Illuminate\Routing\Router
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Routing\Router.php'
-                        line: 737
-                        function: dispatchToRoute
-                        class: Illuminate\Routing\Router
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php'
-                        line: 200
-                        function: dispatch
-                        class: Illuminate\Routing\Router
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                        line: 144
-                        function: 'Illuminate\Foundation\Http\{closure}'
-                        class: Illuminate\Foundation\Http\Kernel
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TransformsRequest.php'
-                        line: 21
-                        function: 'Illuminate\Pipeline\{closure}'
-                        class: Illuminate\Pipeline\Pipeline
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull.php'
-                        line: 31
-                        function: handle
-                        class: Illuminate\Foundation\Http\Middleware\TransformsRequest
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                        line: 183
-                        function: handle
-                        class: Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TransformsRequest.php'
-                        line: 21
-                        function: 'Illuminate\Pipeline\{closure}'
-                        class: Illuminate\Pipeline\Pipeline
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TrimStrings.php'
-                        line: 50
-                        function: handle
-                        class: Illuminate\Foundation\Http\Middleware\TransformsRequest
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                        line: 183
-                        function: handle
-                        class: Illuminate\Foundation\Http\Middleware\TrimStrings
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Http\Middleware\ValidatePostSize.php'
-                        line: 27
-                        function: 'Illuminate\Pipeline\{closure}'
-                        class: Illuminate\Pipeline\Pipeline
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                        line: 183
-                        function: handle
-                        class: Illuminate\Http\Middleware\ValidatePostSize
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance.php'
-                        line: 110
-                        function: 'Illuminate\Pipeline\{closure}'
-                        class: Illuminate\Pipeline\Pipeline
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                        line: 183
-                        function: handle
-                        class: Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Http\Middleware\HandleCors.php'
-                        line: 62
-                        function: 'Illuminate\Pipeline\{closure}'
-                        class: Illuminate\Pipeline\Pipeline
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                        line: 183
-                        function: handle
-                        class: Illuminate\Http\Middleware\HandleCors
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Http\Middleware\TrustProxies.php'
-                        line: 57
-                        function: 'Illuminate\Pipeline\{closure}'
-                        class: Illuminate\Pipeline\Pipeline
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                        line: 183
-                        function: handle
-                        class: Illuminate\Http\Middleware\TrustProxies
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                        line: 119
-                        function: 'Illuminate\Pipeline\{closure}'
-                        class: Illuminate\Pipeline\Pipeline
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php'
-                        line: 175
-                        function: then
-                        class: Illuminate\Pipeline\Pipeline
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php'
-                        line: 144
-                        function: sendRequestThroughRouter
-                        class: Illuminate\Foundation\Http\Kernel
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
-                        line: 300
-                        function: handle
-                        class: Illuminate\Foundation\Http\Kernel
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
-                        line: 288
-                        function: callLaravelOrLumenRoute
-                        class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
-                        line: 91
-                        function: makeApiCall
-                        class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
-                        line: 44
-                        function: makeResponseCall
-                        class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
-                        line: 35
-                        function: makeResponseCallIfConditionsPass
-                        class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\knuckleswtf\scribe\src\Extracting\Extractor.php'
-                        line: 236
-                        function: __invoke
-                        class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\knuckleswtf\scribe\src\Extracting\Extractor.php'
-                        line: 163
-                        function: iterateThroughStrategies
-                        class: Knuckles\Scribe\Extracting\Extractor
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\knuckleswtf\scribe\src\Extracting\Extractor.php'
-                        line: 95
-                        function: fetchResponses
-                        class: Knuckles\Scribe\Extracting\Extractor
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\knuckleswtf\scribe\src\GroupedEndpoints\GroupedEndpointsFromApp.php'
-                        line: 125
-                        function: processRoute
-                        class: Knuckles\Scribe\Extracting\Extractor
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\knuckleswtf\scribe\src\GroupedEndpoints\GroupedEndpointsFromApp.php'
-                        line: 72
-                        function: extractEndpointsInfoFromLaravelApp
-                        class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\knuckleswtf\scribe\src\GroupedEndpoints\GroupedEndpointsFromApp.php'
-                        line: 50
-                        function: extractEndpointsInfoAndWriteToDisk
-                        class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\knuckleswtf\scribe\src\Commands\GenerateDocumentation.php'
-                        line: 53
-                        function: get
-                        class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php'
-                        line: 36
-                        function: handle
-                        class: Knuckles\Scribe\Commands\GenerateDocumentation
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Container\Util.php'
-                        line: 41
-                        function: 'Illuminate\Container\{closure}'
-                        class: Illuminate\Container\BoundMethod
-                        type: '::'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php'
-                        line: 93
-                        function: unwrapIfClosure
-                        class: Illuminate\Container\Util
-                        type: '::'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php'
-                        line: 35
-                        function: callBoundMethod
-                        class: Illuminate\Container\BoundMethod
-                        type: '::'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Container\Container.php'
-                        line: 662
-                        function: call
-                        class: Illuminate\Container\BoundMethod
-                        type: '::'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Console\Command.php'
-                        line: 212
-                        function: call
-                        class: Illuminate\Container\Container
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\symfony\console\Command\Command.php'
-                        line: 279
-                        function: execute
-                        class: Illuminate\Console\Command
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Console\Command.php'
-                        line: 181
-                        function: run
-                        class: Symfony\Component\Console\Command\Command
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\symfony\console\Application.php'
-                        line: 1049
-                        function: run
-                        class: Illuminate\Console\Command
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\symfony\console\Application.php'
-                        line: 318
-                        function: doRunCommand
-                        class: Symfony\Component\Console\Application
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\symfony\console\Application.php'
-                        line: 169
-                        function: doRun
-                        class: Symfony\Component\Console\Application
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php'
-                        line: 196
-                        function: run
-                        class: Symfony\Component\Console\Application
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Foundation\Application.php'
-                        line: 1183
-                        function: handle
-                        class: Illuminate\Foundation\Console\Kernel
-                        type: '->'
-                      -
-                        file: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\artisan'
-                        line: 13
-                        function: handleCommand
-                        class: Illuminate\Foundation\Application
-                        type: '->'
-                    items:
-                      type: object
-                      properties:
-                        file:
-                          type: string
-                          example: 'G:\Develop\htdocs\workspace\try\fix\c\laravel-online-travel-agency-simulation-feature-tests\vendor\laravel\framework\src\Illuminate\Foundation\Exceptions\Handler.php'
-                        line:
-                          type: integer
-                          example: 576
-                        function:
-                          type: string
-                          example: prepareException
-                        class:
-                          type: string
-                          example: Illuminate\Foundation\Exceptions\Handler
-                        type:
-                          type: string
-                          example: '->'
+                    example: 'No query results for model [App\Models\Apartment] 17'
       tags:
         - Endpoints
       security: []
@@ -1920,7 +613,7 @@ paths:
         in: path
         name: apartment_id
         description: 'The ID of the apartment.'
-        example: 15
+        example: 17
         required: true
         schema:
           type: integer
@@ -2063,19 +756,23 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: sit
+                  example: consequatur
+                  nullable: false
                 city_id:
                   type: string
-                  description: ''
-                  example: odio
+                  description: 'The <code>id</code> of an existing record in the cities table.'
+                  example: consequatur
+                  nullable: false
                 address_street:
                   type: string
                   description: ''
-                  example: sed
+                  example: consequatur
+                  nullable: false
                 address_postcode:
                   type: string
                   description: ''
-                  example: aut
+                  example: consequatur
+                  nullable: false
               required:
                 - name
                 - city_id
@@ -2144,13 +841,14 @@ paths:
                 photo:
                   type: string
                   format: binary
-                  description: ':Attribute 必須是一張圖片。 :Attribute 不能大於 5000 KB。.'
+                  description: 'value 必須是一張圖片。 value 不能大於 5000 KB。.'
+                  nullable: false
     parameters:
       -
         in: path
         name: property_id
         description: 'The ID of the property.'
-        example: 20
+        example: 17
         required: true
         schema:
           type: integer
@@ -2180,7 +878,7 @@ paths:
         in: path
         name: property_id
         description: 'The ID of the property.'
-        example: 6
+        example: 17
         required: true
         schema:
           type: integer
@@ -2188,7 +886,7 @@ paths:
         in: path
         name: photo_id
         description: 'The ID of the photo.'
-        example: 20
+        example: 17
         required: true
         schema:
           type: integer
@@ -2216,6 +914,7 @@ paths:
             type: integer
             description: 'City ID.'
             example: 1
+            nullable: false
         -
           in: query
           name: country
@@ -2226,6 +925,7 @@ paths:
             type: integer
             description: 'Country ID.'
             example: 4
+            nullable: false
         -
           in: query
           name: geoobject
@@ -2236,6 +936,7 @@ paths:
             type: integer
             description: 'Geoobject ID.'
             example: 1
+            nullable: false
         -
           in: query
           name: adults
@@ -2246,6 +947,7 @@ paths:
             type: integer
             description: 'Number of adults.'
             example: 2
+            nullable: false
         -
           in: query
           name: children
@@ -2256,6 +958,7 @@ paths:
             type: integer
             description: 'Number of children.'
             example: 1
+            nullable: false
         -
           in: query
           name: facilities
@@ -2284,6 +987,7 @@ paths:
             type: integer
             description: 'Minimum price.'
             example: 100
+            nullable: false
         -
           in: query
           name: price_to
@@ -2294,6 +998,7 @@ paths:
             type: integer
             description: 'Maximum price.'
             example: 200
+            nullable: false
         -
           in: query
           name: start_date
@@ -2304,6 +1009,7 @@ paths:
             type: string
             description: 'date Start date.'
             example: '2024-01-01'
+            nullable: false
         -
           in: query
           name: end_date
@@ -2314,6 +1020,7 @@ paths:
             type: string
             description: 'date End date.'
             example: '2024-01-03'
+            nullable: false
       responses:
         200:
           description: ''
@@ -2832,7 +1539,7 @@ paths:
         in: path
         name: apartment_id
         description: 'The ID of the apartment.'
-        example: 15
+        example: 17
         required: true
         schema:
           type: integer
@@ -2958,24 +1665,29 @@ paths:
               properties:
                 apartment_id:
                   type: string
-                  description: ''
-                  example: repudiandae
+                  description: 'The <code>id</code> of an existing record in the apartments table.'
+                  example: consequatur
+                  nullable: false
                 start_date:
                   type: string
-                  description: ':Attribute 不是有效的日期。.'
-                  example: '2024-04-02T03:38:42'
+                  description: 'value 不是有效的日期。.'
+                  example: '2025-06-04T03:55:28'
+                  nullable: false
                 end_date:
                   type: string
-                  description: ':Attribute 不是有效的日期。.'
-                  example: '2024-04-02T03:38:42'
+                  description: 'value 不是有效的日期。.'
+                  example: '2025-06-04T03:55:28'
+                  nullable: false
                 guests_adults:
                   type: integer
                   description: ''
-                  example: 10
+                  example: 17
+                  nullable: false
                 guests_children:
                   type: integer
                   description: ''
-                  example: 19
+                  example: 17
+                  nullable: false
               required:
                 - apartment_id
                 - start_date
@@ -3102,12 +1814,14 @@ paths:
               properties:
                 rating:
                   type: integer
-                  description: ':Attribute 必須介於 1 至 10 之間。.'
+                  description: 'value 必須介於 1 至 10 之間。.'
                   example: 2
+                  nullable: false
                 review_comment:
                   type: string
-                  description: ':Attribute 不能小於 20 個字元。.'
-                  example: urijtqksnpmuuuteesexnvpllghzgzsupvjcmpqizvbba
+                  description: 'value 不能小於 20 個字元。.'
+                  example: mqeopfuudtdsufvyvddqamniihfqcoynlazghdtqtqxbajwbpilpmufinllwloauydlsmsjuryvoj
+                  nullable: false
     delete:
       summary: 'Delete booking'
       operationId: deleteBooking
@@ -3129,23 +1843,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the booking.'
-        example: 7
+        example: 17
         required: true
         schema:
           type: integer
-tags:
-  -
-    name: Authentication
-    description: ''
-  -
-    name: Endpoints
-    description: ''
-  -
-    name: Owner
-    description: ''
-  -
-    name: Public
-    description: ''
-  -
-    name: User
-    description: ''

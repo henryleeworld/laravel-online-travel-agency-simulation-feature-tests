@@ -4,18 +4,22 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
+    /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
      *
-     * @var array<int, string>
+     * @var list<string>
      */
     protected $fillable = [
         'name',
@@ -27,7 +31,7 @@ class User extends Authenticatable
     /**
      * The attributes that should be hidden for serialization.
      *
-     * @var array<int, string>
+     * @var list<string>
      */
     protected $hidden = [
         'password',
@@ -47,16 +51,25 @@ class User extends Authenticatable
         ];
     }
 
-    public function role()
+    /**
+     * Get the role that owns the user.
+     */
+    public function role(): BelongsTo
     {
         return $this->belongsTo(Role::class);
     }
 
-    public function profile()
+    /**
+     * Get the profile associated with the user.
+     */
+    public function profile(): HasOne
     {
         return $this->hasOne(UserProfile::class);
     }
 
+    /**
+     * Get the bookings for the user.
+     */
     public function bookings()
     {
         return $this->hasMany(Booking::class);

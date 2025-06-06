@@ -3,17 +3,14 @@
 namespace Database\Seeders;
 
 use App\Models\Geoobject;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class GeoobjectSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
-     *
-     * @return void
+     * Run the database seeders.
      */
-    public function run()
+    public function run(): void
     {
         Geoobject::create([
             'city_id' => 1,
