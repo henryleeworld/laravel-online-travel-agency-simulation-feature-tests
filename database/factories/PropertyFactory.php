@@ -4,9 +4,10 @@ namespace Database\Factories;
 
 use App\Models\Property;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Http\UploadedFile;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Property>
+ * @extends Factory<Property>
  */
 class PropertyFactory extends Factory
 {
@@ -30,7 +31,7 @@ class PropertyFactory extends Factory
     {
         return $this->afterCreating(function ($property) use ($count) {
             for ($i = 0; $i < $count; $i++) {
-                $property->addMedia(fake()->image())->toMediaCollection('images');
+                $property->addMedia(UploadedFile::fake()->image("photo_{$i}.jpg"))->toMediaCollection('images');
             }
         });
     }

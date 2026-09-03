@@ -2,18 +2,14 @@
 
 namespace App\Models;
 
+use Database\Factories\GeoobjectFactory;
+use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+#[Fillable(['city_id', 'name', 'lat', 'long'])]
 class Geoobject extends Model
 {
-    /** @use HasFactory<\Database\Factories\GeoobjectFactory> */
+    /** @use HasFactory<GeoobjectFactory> */
     use HasFactory;
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var list<string>
-     */
-    protected $fillable = ['city_id', 'name', 'lat', 'long'];
 }

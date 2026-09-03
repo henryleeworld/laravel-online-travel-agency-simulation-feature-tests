@@ -2,25 +2,21 @@
 
 namespace App\Models;
 
+use Database\Factories\RoleFactory;
+use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
+#[Fillable(['name'])]
 class Role extends Model
 {
-    /** @use HasFactory<\Database\Factories\RoleFactory> */
+    /** @use HasFactory<RoleFactory> */
     use HasFactory;
 
     const ROLE_ADMINISTRATOR = 1;
     const ROLE_OWNER = 2;
     const ROLE_USER = 3;
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var list<string>
-     */
-    protected $fillable = ['name'];
 
     /**
      * The permissions that belong to the role.

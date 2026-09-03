@@ -3,10 +3,11 @@
 namespace Database\Factories;
 
 use App\Models\City;
+use App\Models\Geoobject;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Geoobject>
+ * @extends Factory<Geoobject>
  */
 class GeoobjectFactory extends Factory
 {

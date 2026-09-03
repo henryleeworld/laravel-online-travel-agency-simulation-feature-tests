@@ -2,21 +2,17 @@
 
 namespace App\Models;
 
+use Database\Factories\FacilityCategoryFactory;
+use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+#[Fillable(['name'])]
 class FacilityCategory extends Model
 {
-    /** @use HasFactory<\Database\Factories\FacilityCategoryFactory> */
+    /** @use HasFactory<FacilityCategoryFactory> */
     use HasFactory;
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var list<string>
-     */
-    protected $fillable = ['name'];
 
     /**
      * Get the facilities for the facility category.

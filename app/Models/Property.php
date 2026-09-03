@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use App\Observers\PropertyObserver;
+use Database\Factories\PropertyFactory;
+use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -15,32 +17,23 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
+#[Fillable(['owner_id', 'name', 'city_id', 'address_street', 'address_postcode', 'lat', 'long', 'bookings_avg_rating',])]
 #[ObservedBy([PropertyObserver::class])]
 class Property extends Model implements HasMedia
 {
-    /** @use HasFactory<\Database\Factories\PropertyFactory> */
+    /** @use HasFactory<PropertyFactory> */
     use HasFactory, InteractsWithMedia;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var list<string>
-     */
-    protected $fillable = [
-        'owner_id',
-        'name',
-        'city_id',
-        'address_street',
-        'address_postcode',
-        'lat',
-        'long',
-        'bookings_avg_rating',
-    ];
+    public function registerMediaConversions(?Media $media = null): void
+    {
+        $this->addMediaConversion('thumbnail')
+            ->width(800);
+    }
 
     /**
      * Get the city that owns the property.
      */
-    public function city()
+    public function city(): BelongsTo
     {
         return $this->belongsTo(City::class);
     }
@@ -66,15 +59,9 @@ class Property extends Model implements HasMedia
     /**
      * The facilities that belong to the property.
      */
-    public function facilities()
+    public function facilities(): BelongsToMany
     {
         return $this->belongsToMany(Facility::class);
-    }
-
-    public function registerMediaConversions(?Media $media = null): void
-    {
-        $this->addMediaConversion('thumbnail')
-            ->width(800);
     }
 
     /**

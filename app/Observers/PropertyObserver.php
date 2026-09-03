@@ -9,7 +9,7 @@ class PropertyObserver
     /**
      * Handle the Property "creating" event.
      */
-    public function creating(Property $property)
+    public function creating(Property $property): void
     {
         if (auth()->check()) {
             $property->owner_id = auth()->id();

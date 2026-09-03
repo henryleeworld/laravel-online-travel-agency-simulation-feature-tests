@@ -4,16 +4,16 @@ namespace Database\Factories;
 
 use App\Models\Booking;
 use App\Models\BookingGuest;
+use Illuminate\Database\Eloquent\Factories\Attributes\UseModel;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Carbon;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\BookingGuest>
+ * @extends Factory<BookingGuest>
  */
+#[UseModel(BookingGuest::class)]
 class BookingGuestFactory extends Factory
 {
-    protected $model = BookingGuest::class;
-
     /**
      * Define the model's default state.
      *

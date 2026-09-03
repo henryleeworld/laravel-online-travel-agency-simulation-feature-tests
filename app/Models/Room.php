@@ -2,22 +2,18 @@
 
 namespace App\Models;
 
+use Database\Factories\RoomFactory;
+use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+#[Fillable(['apartment_id', 'room_type_id', 'name'])]
 class Room extends Model
 {
-    /** @use HasFactory<\Database\Factories\RoomFactory> */
+    /** @use HasFactory<RoomFactory> */
     use HasFactory;
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var list<string>
-     */
-    protected $fillable = ['apartment_id', 'room_type_id', 'name'];
 
     /**
      * Get the room type that owns the room.

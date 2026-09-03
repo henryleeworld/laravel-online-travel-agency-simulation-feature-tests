@@ -3,7 +3,7 @@
 @endphp
 # {{ u::trans("scribe::headings.introduction") }}
 
-{!! __($description) !!}
+{!!  __($description) !!}
 
 <aside>
     <strong>{{ u::trans("scribe::labels.base_url") }}</strong>: <code>{!! $baseUrl !!}</code>

@@ -2,18 +2,14 @@
 
 namespace App\Models;
 
+use Database\Factories\RoomTypeFactory;
+use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+#[Fillable(['name'])]
 class RoomType extends Model
 {
-    /** @use HasFactory<\Database\Factories\RoomTypeFactory> */
+    /** @use HasFactory<RoomTypeFactory> */
     use HasFactory;
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var list<string>
-     */
-    protected $fillable = ['name'];
 }
